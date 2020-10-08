@@ -1,0 +1,10 @@
+C:\Users\MamonovaOV\source\repos\FileManager\FileManager\bin\Debug\FileManager.exe.config
+C:\Users\MamonovaOV\source\repos\FileManager\FileManager\bin\Debug\FileManager.exe
+C:\Users\MamonovaOV\source\repos\FileManager\FileManager\bin\Debug\FileManager.pdb
+C:\Users\MamonovaOV\source\repos\FileManager\FileManager\obj\Debug\FileManager.csprojAssemblyReference.cache
+C:\Users\MamonovaOV\source\repos\FileManager\FileManager\obj\Debug\FileManager.Properties.Resources.resources
+C:\Users\MamonovaOV\source\repos\FileManager\FileManager\obj\Debug\FileManager.csproj.GenerateResource.cache
+C:\Users\MamonovaOV\source\repos\FileManager\FileManager\obj\Debug\FileManager.csproj.CoreCompileInputs.cache
+C:\Users\MamonovaOV\source\repos\FileManager\FileManager\obj\Debug\FileManager.exe
+C:\Users\MamonovaOV\source\repos\FileManager\FileManager\obj\Debug\FileManager.pdb
+C:\Users\MamonovaOV\source\repos\FileManager\FileManager\obj\Debug\FileManager.Form1.resources

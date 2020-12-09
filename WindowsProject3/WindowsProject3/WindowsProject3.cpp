@@ -14,7 +14,7 @@ HINSTANCE hInst;                                // текущий экземпл
 WCHAR szTitle[MAX_LOADSTRING];                  // Текст строки заголовка
 WCHAR szWindowClass[MAX_LOADSTRING];            // имя класса главного окна
 int size = 1;
-bool LMouseIsClicked = false;
+BOOL LMouseIsClicked = false;
 POINT LastP;
 POINT NewP;
 std::vector<POINT> points;
@@ -27,9 +27,9 @@ HPEN pen = CreatePen(PS_SOLID, 2*size, RGB(0, 255, 255));
 COLORREF lastColor = RGB(0, 255, 255);
 HBRUSH brush = (HBRUSH)GetStockObject(NULL_BRUSH);
 HPEN erasePen = CreatePen(PS_SOLID, 2 * size, RGB(0, 0, 0));
-bool saveFlag = false;
-bool loadFlag = true;
-bool missFlag = false;
+BOOL saveFlag = false;
+BOOL loadFlag = true;
+BOOL missFlag = false;
 HDC hdcMem;
 HBITMAP hbmMem;
 POINT WindSize;
@@ -162,16 +162,6 @@ bool MouseInClientZone(HWND hWnd)
     rt.top += zeroP.y;
     rt.bottom += zeroP.y;
     return (cur.x >= rt.left) && (cur.x <= rt.right) && (cur.y >= rt.top) && (cur.y <= rt.bottom);
-}
-void CheckDrawing(HWND hWnd)
-{
-    if (!MouseInClientZone(hWnd) || IsIconic(hWnd))
-    {
-        LMouseIsClicked = false;
-        figMem.clear();
-        loadFlag = true;
-        InvalidateRect(hWnd, NULL, TRUE);
-    }
 }
 
 CHOOSECOLOR GetColorD(HWND hWndc)
@@ -342,9 +332,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         }
         SendMessage(hWidth, CB_SETCURSEL, 0, 0L);
         break;
-    case(WM_TIMER):
-        CheckDrawing(hWnd);
-        break;
 
 //######################################
     case(WM_LBUTTONDOWN):
@@ -376,6 +363,9 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         }
 
         break;
+    case(WM_TIMER):
+        if ((GetKeyState(VK_LBUTTON) & 0x8000) != 0 || LMouseIsClicked == false)
+            break;
     case(WM_LBUTTONUP):
         LMouseIsClicked = false;
         switch (CurDrawMode)
